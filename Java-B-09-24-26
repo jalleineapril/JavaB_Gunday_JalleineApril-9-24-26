@@ -1,0 +1,253 @@
+import java.util.Scanner;
+
+public class Main {
+
+    static double square(double n) { 
+        return n * n; 
+    }
+
+    static int add(int a, int b) { 
+        return a + b; 
+    }
+
+    static void greet(String name) { 
+        System.out.println("Hello, " + name + "! Welcome to Java."); 
+    }
+
+    static int factorial(int n) { 
+        if (n <= 1) { 
+            return 1; 
+        } 
+        return n * factorial(n - 1); 
+    }
+
+    static int multiply(int a, int b) { 
+        return a * b; 
+    }
+
+    static double multiply(double a, double b) { 
+        return a * b; 
+    }
+
+    static int power(int base, int exponent) { 
+        int result = 1; 
+        for (int i = 0; i < exponent; i++) { 
+            result *= base; 
+        } 
+        return result; 
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("What is your name? ");
+        String name = scanner.nextLine();
+        
+        System.out.print("What is your age? ");
+        int age = Integer.parseInt(scanner.nextLine());
+        
+        System.out.println("\n------ INTRO CARD ------");
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+
+        System.out.print("\nEnter a day number (1-7): ");
+        int day = scanner.nextInt();
+        switch (day) { 
+            case 1: System.out.println("Monday"); break; 
+            case 2: System.out.println("Tuesday"); break; 
+            case 3: System.out.println("Wednesday"); break; 
+            case 4: System.out.println("Thursday"); break; 
+            case 5: System.out.println("Friday"); break; 
+            case 6: System.out.println("Saturday"); break; 
+            case 7: System.out.println("Sunday"); break; 
+            default: System.out.println("Invalid day"); break; 
+        
+        System.out.println("\nCounting 1 to 5 with a for loop:");
+        for (int i = 1; i <= 5; i++) { 
+            System.out.print(i + " "); 
+        } 
+        System.out.println();
+
+        System.out.println("\nCounting down from 5 with a while loop:");
+        int n = 5; 
+        while (n > 0) { 
+            System.out.print(n + " "); 
+            n--; 
+        } 
+        System.out.println();
+
+        System.out.println("\ndo-while example:");
+        int x = 0; 
+        do { 
+            System.out.println("x = " + x); 
+            x++; 
+        } while (x < 3);
+
+        System.out.println("\n------ FUNCTION CALLS ------");
+        
+        int sum = add(5, 7); 
+        System.out.println("5 + 7 = " + sum); 
+
+        double sq = square(4.5); 
+        System.out.println("4.5 squared = " + sq); 
+
+        greet("Maria"); 
+
+        System.out.println("5! = " + factorial(5)); 
+
+        System.out.println("Multiply(5, 3) = " + multiply(5, 3)); 
+        
+        System.out.println("2 to the power of 3 = " + power(2, 3));
+
+        scanner.close(); 
+    }
+}
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Get user input
+        System.out.print("What is your name? ");
+        String name = scanner.nextLine();
+        
+        System.out.print("What is your age? ");
+        int age = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("\n------ INTRO CARD ------");
+        System.out.println("Name: " + name);
+        System.out.println("Age: "  + age);
+        
+        scanner.close();
+    }
+}
+import java.util.ArrayList;
+
+class Contact {
+    public String name;
+    public String phone;
+
+    public Contact(String name, String phone) {
+        this.name = name;
+        this.phone = phone;
+    }
+
+    public String toString() {
+        return "Name: " + name + ", Phone: " + phone;
+    }
+}
+
+public class Main {
+    static ArrayList<Contact> contacts = new ArrayList<>();
+
+    public static void main(String[] args) {
+        contacts.add(new Contact("Ana Reyes", "0917-123-4567"));
+        contacts.add(new Contact("Mark Cruz", "0928-765-4567"));
+
+        System.out.println("All contacts:");
+        for (Contact c : contacts) {
+            System.out.println(c);
+        }
+
+        System.out.println("\nSearching for contact...");
+        search("Ana Reyes");
+
+        System.out.println("\nDeleting Ana Reyes...");
+        contacts.removeIf(c -> c.name.equalsIgnoreCase("Ana Reyes"));
+
+        System.out.println("\nAfter delete:");
+        for (Contact c : contacts) {
+            System.out.println(c);
+        }
+    }
+
+    static void search(String name) {
+        boolean found = false;
+        for (Contact c : contacts) {
+            if (c.name.equalsIgnoreCase(name)) {
+                System.out.println("Found -> " + c);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("Contact not found: " + name);
+        }
+    }
+}
+
+  
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Contact {
+    private String name;
+    private String phone;
+
+    public Contact(String name, String phone){
+        this.name = name;
+        this.phone = phone;
+    }
+    
+    public String getName(){ return name; }
+    public String getPhone(){ return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
+
+    public String toString(){
+        return name + ": " + phone;
+    }
+}
+
+public class Main {
+    static ArrayList<Contact> contacts = new ArrayList<>();
+
+    public static void main(String[] args) {
+        contacts.add(new Contact("Ana Reyes", "0917-123-4567"));
+        contacts.add(new Contact("Mark Cruz", "0928-765-4567"));
+
+        System.out.println("All contacts:");
+        for (Contact c : contacts) {
+            System.out.println(c);
+        }
+
+        System.out.println("\nSearching for Ana Reyes:");
+        search("Ana Reyes");
+
+        System.out.println("\nUpdating Mark Cruz's phone number...");
+        updatePhone("Mark Cruz", "0999-888-7777");
+
+        System.out.println("\nDeleting Ana Reyes...");
+        contacts.removeIf(c -> c.getName().equalsIgnoreCase("Ana Reyes"));
+
+        System.out.println("\nFinal contact list:");
+        for (Contact c : contacts) {
+            System.out.println(c);
+        }
+    }
+
+    static void search(String name) {
+        boolean found = false;
+        for (Contact c : contacts) {
+            if (c.getName().equalsIgnoreCase(name)) {
+                System.out.println("Found -> " + c);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("Contact not found: " + name);
+        }
+    }
+
+    static void updatePhone(String name, String newPhone) {
+        for (Contact c : contacts) {
+            if (c.getName().equalsIgnoreCase(name)) {
+                c.setPhone(newPhone);
+                System.out.println("Updated -> " + c);
+                return;
+            }
+        }
+        System.out.println("Cannot update. Contact not found: " + name);
+    }
+}
+
